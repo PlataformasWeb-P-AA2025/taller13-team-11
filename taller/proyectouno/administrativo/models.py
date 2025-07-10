@@ -14,7 +14,7 @@ class Edificio(models.Model):
     tipo = models.CharField(max_length=20, choices=TIPOS)
 
     def __str__(self):
-        return self.nombre, self.direccion, self.tipo, self.tipo
+        return f"{self.nombre} - {self.direccion} - {self.ciudad} - {self.tipo}"
 
 class Departamento(models.Model):
     propietario = models.CharField(max_length=100)

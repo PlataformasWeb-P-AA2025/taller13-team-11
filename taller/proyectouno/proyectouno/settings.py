@@ -91,7 +91,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'proyectoUno.wsgi.application'
+WSGI_APPLICATION = 'proyectouno.wsgi.application'
 
 
 # Database

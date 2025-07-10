@@ -1,0 +1,37 @@
+<h2>Lista de Edificios</h2>
+
+<div style="margin-bottom: 20px;">
+  <a href="{{ url_for('ver_departamentos') }}">
+    <button>Departamentos</button>
+  </a>
+  <a href="{{ url_for('crear_edificio') }}">
+    <button>Crear nuevo Edificio</button>
+  </a>
+</div>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Ciudad</th>
+        <th>Tipo</th>
+        <th>Acciones</th>
+    </tr>
+    {% for e in edificios %}
+    <tr>
+        <td>{{ e.id }}</td>
+        <td>{{ e.nombre }}</td>
+        <td>{{ e.direccion }}</td>
+        <td>{{ e.ciudad }}</td>
+        <td>{{ e.tipo }}</td>
+        <td>
+            <a href="{{ url_for('editar_edificio', id=e.id) }}">Editar</a> |
+            <form method="post" action="{{ url_for('eliminar_edificio', id=e.id) }}" style="display:inline;">
+                <button type="submit" onclick="return confirm('¿Estás seguro de eliminar?')">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+

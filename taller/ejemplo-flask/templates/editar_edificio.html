@@ -1,0 +1,23 @@
+<h2>Editar Edificio</h2>
+<form method="post">
+    <label>Nombre:</label><br>
+    <input name="nombre" value="{{ edificio.nombre }}" required><br>
+
+    <label>Dirección:</label><br>
+    <input name="direccion" value="{{ edificio.direccion }}" required><br>
+
+    <label>Ciudad:</label><br>
+    <input name="ciudad" value="{{ edificio.ciudad }}" required><br>
+
+    <label>Tipo:</label><br>
+    <select name="tipo" required>
+        <option value="residencial" {% if edificio.tipo == 'residencial' %}selected{% endif %}>Residencial</option>
+        <option value="comercial" {% if edificio.tipo == 'comercial' %}selected{% endif %}>Comercial</option>
+    </select><br><br>
+
+    <button type="submit">Guardar</button>
+</form>
+
+<a href="{{ url_for('ver_edificios') }}">
+    <button>Regresar</button>
+  </a>

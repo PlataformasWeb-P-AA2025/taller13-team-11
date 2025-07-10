@@ -1,0 +1,36 @@
+<h2>Lista de Departamentos</h2>
+
+<div style="margin-bottom: 20px;">
+  <a href="{{ url_for('ver_edificios') }}">
+    <button>Edificios</button>
+  </a>
+  <a href="{{ url_for('crear_departamento') }}">
+    <button>Crear nuevo Departamento</button>
+  </a>
+</div>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Propietario</th>
+        <th>Costo</th>
+        <th>Cuartos</th>
+        <th>Edificio</th>
+        <th>Acciones</th>
+    </tr>
+    {% for d in departamentos %}
+    <tr>
+        <td>{{ d.id }}</td>
+        <td>{{ d.propietario }}</td>
+        <td>{{ d.costo }}</td>
+        <td>{{ d.cuartos }}</td>
+        <td>{{ d.edificio }}</td>
+        <td>
+            <a href="{{ url_for('editar_departamento', id=d.id) }}">Editar</a> |
+            <form method="post" action="{{ url_for('eliminar_departamento', id=d.id) }}" style="display:inline;">
+                <button type="submit" onclick="return confirm('¿Estás seguro de eliminar?')">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

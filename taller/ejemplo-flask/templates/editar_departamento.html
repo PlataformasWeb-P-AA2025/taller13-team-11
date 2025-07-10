@@ -1,0 +1,23 @@
+<h2>Editar Departamento</h2>
+<form method="post">
+    <label>Propietario:</label><br>
+    <input name="propietario" value="{{ departamento.propietario }}" required><br>
+
+    <label>Costo:</label><br>
+    <input name="costo" value="{{ departamento.costo }}" required><br>
+
+    <label>Cuartos:</label><br>
+    <input name="cuartos" value="{{ departamento.cuartos }}" required><br>
+
+    <label>Edificio:</label><br>
+    <select name="edificio" required>
+        {% for e in edificios %}
+        <option value="{{ e.id }}" {% if e.id == departamento.edificio %}selected{% endif %}>{{ e.nombre }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <button type="submit">Guardar</button>
+</form>
+<a href="{{ url_for('ver_departamentos') }}">
+    <button>Regresar</button>
+</a>
